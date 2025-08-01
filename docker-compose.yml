@@ -10,6 +10,8 @@ services:
       - .:/app:cached                    # Mac performance optimization
       - /app/node_modules               # Prevent overwrite
       - /app/.next                      # Cache Next.js builds
+    env_file:
+      - .env.local                      # Load local environment
     environment:
       - CHOKIDAR_USEPOLLING=true       # Fix hot reload on Mac
       - WATCHPACK_POLLING=true          # Additional polling fix
