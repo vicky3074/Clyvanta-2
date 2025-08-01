@@ -6,8 +6,6 @@ services:
     container_name: clyvanta-prod
     ports:
       - "80:3000"
-    env_file:
-      - .env.production                 # Load production environment
     restart: always
     networks:
       - clyvanta-prod-network
