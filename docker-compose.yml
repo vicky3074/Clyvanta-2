@@ -3,23 +3,22 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    container_name: cch-dev
+    container_name: clyvanta-dev
     ports:
-      - "3000:3000"
+      - "3002:3000"
     volumes:
       - .:/app:cached                    # Mac performance optimization
       - /app/node_modules               # Prevent overwrite
       - /app/.next                      # Cache Next.js builds
-    env_file:
-      - .env.local                      # Load local environment
     environment:
       - CHOKIDAR_USEPOLLING=true       # Fix hot reload on Mac
       - WATCHPACK_POLLING=true          # Additional polling fix
+      - NODE_ENV=development
     restart: unless-stopped
     networks:
-      - cch-network
+      - clyvanta-network
     command: npm run dev
 
 networks:
-  cch-network:
+  clyvanta-network:
     driver: bridge
