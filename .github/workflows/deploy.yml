@@ -1,0 +1,67 @@
+name: Deploy to Oracle Cloud
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build application
+      run: npm run build
+      
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        
+    - name: Add server to known hosts
+      run: |
+        ssh-keyscan -H 150.230.31.24 >> ~/.ssh/known_hosts
+        
+    - name: Deploy to Oracle Cloud
+      run: |
+        # Create deployment directory on server
+        ssh ubuntu@150.230.31.24 "mkdir -p /home/ubuntu/Clyvanta-2"
+        
+        # Sync code to server
+        ssh ubuntu@150.230.31.24 "cd /home/ubuntu/Clyvanta-2 && git pull origin main || git clone https://github.com/vicky3074/Clyvanta-2.git ."
+        
+        # Build and deploy with Docker
+        ssh ubuntu@150.230.31.24 "
+          cd /home/ubuntu/Clyvanta-2 && 
+          docker-compose -f docker-compose.prod.yml down --remove-orphans || true &&
+          docker-compose -f docker-compose.prod.yml build --no-cache &&
+          docker-compose -f docker-compose.prod.yml up -d
+        "
+        
+    - name: Verify deployment
+      run: |
+        echo "Waiting for application to start..."
+        sleep 30
+        
+        # Check if site is responding
+        if curl -f -s http://150.230.31.24/ > /dev/null; then
+          echo "✅ Deployment successful - site is responding"
+        else
+          echo "❌ Deployment failed - site not responding"
+          exit 1
+        fi
+        
+        # Check container status
+        ssh ubuntu@150.230.31.24 "docker ps | grep clyvanta-prod || echo 'Container not found'"

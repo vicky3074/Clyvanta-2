@@ -1,15 +1,15 @@
-# CanadaCashHomes-2 Project Documentation
+# Clyvanta-2 Project Documentation
 
 ## 🎯 Project Overview
 
-**CanadaCashHomes-2** is a complete Next.js 15 rebranding of the CanadaCashHomes website with modern features, automated deployment, and optimized lead capture functionality for the Canadian real estate market.
+**Clyvanta-2** is a complete Next.js 15 rebranding of the Clyvanta website with modern features, automated deployment, and optimized lead capture functionality for the real estate market.
 
-### 📊 Project Status: **LIVE & OPERATIONAL** ✅
+### 📊 Project Status: **DEVELOPMENT READY** ✅
 
-- **Live URL**: http://140.238.151.38/
+- **Live URL**: http://150.230.31.24/ (Oracle Cloud deployment target)
 - **Local Development**: http://localhost:3000 or http://10.46.198.82:3000
-- **Repository**: https://github.com/vicky3074/CanadaCashHomes-2
-- **Server**: Oracle Cloud (140.238.151.38)
+- **Repository**: https://github.com/vicky3074/Clyvanta-2
+- **Server**: Oracle Cloud (150.230.31.24)
 - **Deployment**: **FULLY AUTOMATED** via GitHub Actions ✅
 - **Last Updated**: August 1, 2025
 - **Repository Sync**: Local ↔ Production ↔ GitHub synchronized ✅
@@ -33,7 +33,7 @@
 - **Web Server**: Docker Container (Next.js production server)
 - **OS**: Ubuntu 24.04.2 LTS
 - **Cloud Provider**: Oracle Cloud Infrastructure  
-- **Server IP**: 140.238.151.38 (accessible on port 80)
+- **Server IP**: 150.230.31.24 (accessible on port 80)
 - **RAM**: 1GB (Oracle Always Free tier) + 2GB swap enabled for build performance
 - **Performance**: Code-only changes deploy in ~30-45 seconds
 
@@ -41,7 +41,7 @@
 - **Version Control**: Git + GitHub (synchronized across local/production)
 - **CI/CD**: **GitHub Actions with smart Docker rebuilds** ✅
 - **Deployment Method**: Docker Compose with conditional rebuilding
-- **SSH Key**: `/Users/vicky/Desktop/Vicky/Ventures/Keys/Oracle (CCH2) 140.238.151.38/ssh-key-2025-07-17.key`
+- **SSH Key**: Oracle Cloud SSH key for 150.230.31.24 server access
 - **Secrets**: GitHub repository secrets for secure deployment
 
 ---
@@ -158,8 +158,8 @@ npm audit fix           # Can upgrade dependencies automatically
 **Configuration:**
 ```yaml
 # GitHub Repository Secrets (configured)
-SSH_PRIVATE_KEY: [Oracle Cloud SSH key]
-SERVER_HOST: 140.238.151.38
+SSH_PRIVATE_KEY: [Oracle Cloud SSH key for 150.230.31.24]
+SERVER_HOST: 150.230.31.24
 ```
 
 **Usage:**
@@ -176,7 +176,7 @@ git push origin main
 ## 📁 Project Structure
 
 ```
-/CanadaCashHomes-2/
+/Clyvanta-2/
 ├── .github/workflows/
 │   └── deploy.yml              # ✅ NEW: Automated deployment
 ├── src/app/                    # Next.js App Router pages
@@ -189,13 +189,13 @@ git push origin main
 │   ├── how-it-works/page.tsx   # How It Works (FAQ removed)
 │   └── [other pages...]
 ├── components/                 # React components
-│   ├── Header.tsx              # Navigation (phone number fixed)
+│   ├── Header.tsx              # Navigation
 │   ├── Footer.tsx              # Site footer
 │   ├── CTA.tsx                 # Call-to-action (standardized)
 │   ├── ThemeToggle.tsx         # ✅ NEW: Theme switching
 │   └── [other components...]
 ├── src/lib/
-│   ├── config.ts               # ✅ UPDATED: Correct phone config
+│   ├── config.ts               # ✅ UPDATED: Configuration settings
 │   └── theme-provider.tsx      # ✅ NEW: Theme context
 ├── src/styles/
 │   └── themes.css              # ✅ NEW: CSS custom properties
@@ -210,7 +210,7 @@ git push origin main
 
 ### **Local Development**
 ```bash
-cd "/path/to/CanadaCashHomes-2"
+cd "/Users/vicky/Desktop/Vicky/Ventures/Clyvanta-2/Clyvanta-2"
 npm install
 npm run dev
 # Access: http://localhost:3000
@@ -224,19 +224,19 @@ git commit -m "feat: your changes"
 git push origin main
 
 # ✅ Deployment happens automatically!
-# Monitor: https://github.com/vicky3074/CanadaCashHomes-2/actions
+# Monitor: https://github.com/vicky3074/Clyvanta-2/actions
 ```
 
 ### **Manual Server Access** (if needed)
 ```bash
-ssh -i "/Users/vicky/Desktop/Vicky/Ventures/Keys/Oracle (CCH2) 140.238.151.38/ssh-key-2025-07-17.key" ubuntu@140.238.151.38
+ssh -i "/Users/vicky/Desktop/Vicky/Ventures/Keys/Oracle (CCH2) 150.230.31.24/ssh-key-2025-07-17.key" ubuntu@150.230.31.24
 
 # Check containers
 docker ps
-docker logs cch-prod
+docker logs clyvanta-prod
 
 # Manual rebuild (if needed)
-cd /home/ubuntu/CanadaCashHomes-2
+cd /home/ubuntu/Clyvanta-2
 docker-compose -f docker-compose.prod.yml down
 docker-compose -f docker-compose.prod.yml build --no-cache
 docker-compose -f docker-compose.prod.yml up -d
@@ -319,10 +319,10 @@ docker-compose -f docker-compose.prod.yml up -d
 - **Theme Switching**: < 100ms transition
 
 ### **SEO Configuration**
-- **Title**: "CanadaCashHomes - Sell Your House Fast for Cash"
-- **Description**: Optimized for Canadian real estate market
+- **Title**: "Clyvanta - Premium Real Estate Solutions"
+- **Description**: Premium real estate solutions and services
 - **Meta Tags**: OpenGraph, structured data
-- **Local SEO**: Ontario geographic targeting
+- **Local SEO**: Global real estate market targeting
 - **Search Engine Status**: Ready for indexing (robots.txt can be deleted to go live)
 - **Layout Configuration**: `robots: { index: true, follow: true }` ✅
 
@@ -333,17 +333,17 @@ docker-compose -f docker-compose.prod.yml up -d
 ### **Production Health Checks**
 ```bash
 # Site availability
-curl -I http://140.238.151.38/
+curl -I http://150.230.31.24/
 
 # Phone number verification
-curl -s http://140.238.151.38/ | grep -o 'tel:[^"]*'
+curl -s http://150.230.31.24/ | grep -o 'tel:[^"]*'
 
 # Container status
-ssh ubuntu@140.238.151.38 "docker ps | grep cch-prod"
+ssh ubuntu@150.230.31.24 "docker ps | grep clyvanta-prod"
 ```
 
 ### **GitHub Actions Monitoring**
-- **Workflow Runs**: https://github.com/vicky3074/CanadaCashHomes-2/actions
+- **Workflow Runs**: https://github.com/vicky3074/Clyvanta-2/actions
 - **Deployment Status**: Monitor via GitHub UI
 - **Logs**: Available in Actions tab for debugging
 
@@ -375,7 +375,7 @@ ssh ubuntu@140.238.151.38 "docker ps | grep cch-prod"
 ### **Ready for Production Launch**
 - [ ] Delete robots.txt file to enable search engine crawling
 - [ ] HTTPS SSL certificate setup  
-- [ ] Domain mapping (canadacashhomes.com)
+- [ ] Domain mapping (clyvanta.com)
 - [ ] Monitor form submissions and leads
 
 ### **Future Enhancements**
@@ -397,25 +397,25 @@ ssh ubuntu@140.238.151.38 "docker ps | grep cch-prod"
 ### **Site Down Recovery**
 ```bash
 # 1. Check container status
-ssh ubuntu@140.238.151.38 "docker ps -a"
+ssh ubuntu@150.230.31.24 "docker ps -a"
 
 # 2. Restart containers
-ssh ubuntu@140.238.151.38 "
-cd /home/ubuntu/CanadaCashHomes-2
+ssh ubuntu@150.230.31.24 "
+cd /home/ubuntu/Clyvanta-2
 docker-compose -f docker-compose.prod.yml up -d
 "
 
 # 3. Verify recovery
-curl -I http://140.238.151.38/
+curl -I http://150.230.31.24/
 ```
 
 ### **Rollback Procedure**
 ```bash
 # 1. SSH to server
-ssh ubuntu@140.238.151.38
+ssh ubuntu@150.230.31.24
 
 # 2. Rollback to previous commit
-cd /home/ubuntu/CanadaCashHomes-2
+cd /home/ubuntu/Clyvanta-2
 git log --oneline -5  # Find previous commit
 git reset --hard [COMMIT_HASH]
 
@@ -426,9 +426,9 @@ docker-compose -f docker-compose.prod.yml up -d
 ```
 
 ### **Emergency Contacts**
-- **Server**: Oracle Cloud Console
-- **Repository**: https://github.com/vicky3074/CanadaCashHomes-2
-- **SSH Key**: `/Users/vicky/Desktop/Vicky/Ventures/Keys/Oracle (CCH2) 140.238.151.38/ssh-key-2025-07-17.key`
+- **Server**: Oracle Cloud Console (150.230.31.24)
+- **Repository**: https://github.com/vicky3074/Clyvanta-2
+- **SSH Key**: Oracle Cloud SSH key for 150.230.31.24 server access
 
 ---
 
@@ -436,7 +436,7 @@ docker-compose -f docker-compose.prod.yml up -d
 
 ```bash
 # Local Development
-cd "/Users/vicky/Desktop/Vicky/Ventures/CanadaCashHome-Part 2/CanadaCashHomes-2"
+cd "/Users/vicky/Desktop/Vicky/Ventures/Clyvanta-2/Clyvanta-2"
 npm run dev
 
 # Deploy to Production (AUTOMATED)
@@ -447,18 +447,18 @@ gh run list --limit 1
 gh run view --web
 
 # Server Access
-ssh -i "/Users/vicky/Desktop/Vicky/Ventures/Keys/Oracle (CCH2) 140.238.151.38/ssh-key-2025-07-17.key" ubuntu@140.238.151.38
+ssh -i "/Users/vicky/Desktop/Vicky/Ventures/Keys/Oracle (CCH2) 150.230.31.24/ssh-key-2025-07-17.key" ubuntu@150.230.31.24
 
 # Container Management
 docker ps
-docker-compose -f docker-compose.prod.yml logs cch-prod
+docker-compose -f docker-compose.prod.yml logs clyvanta-prod
 
 # Enable Search Engine Crawling (when ready to go live)
-rm "/Users/vicky/Desktop/Vicky/Ventures/CanadaCashHome-Part 2/CanadaCashHomes-2/public/robots.txt"
+rm "/Users/vicky/Desktop/Vicky/Ventures/Clyvanta-2/Clyvanta-2/public/robots.txt"
 git add . && git commit -m "feat: enable search engine crawling" && git push origin main
 
 # Production Health Check
-curl -I http://140.238.151.38/
+curl -I http://150.230.31.24/
 ```
 
 ---
@@ -477,7 +477,7 @@ curl -I http://140.238.151.38/
 
 ### **Technical Excellence Achieved**
 - **Build Time**: 4 minutes 33 seconds (optimized Docker deployment)
-- **Production Status**: HTTP 200, fully operational at http://140.238.151.38/
+- **Production Status**: HTTP 200, fully operational at http://150.230.31.24/
 - **Code Quality**: Eliminated technical debt, improved maintainability
 - **User Experience**: Seamless theme switching, integrated form success flow
 
@@ -594,7 +594,7 @@ import Image from 'next/image'
 
 <Image
   src="/images/logo.svg"
-  alt="CanadaCashHomes Logo"
+  alt="Clyvanta Logo"
   width={160}
   height={40}
   priority // For above-the-fold images
@@ -653,10 +653,10 @@ import Link from 'next/link'
 ## 🧠 Context for Future Development Sessions
 
 ### **What This Project Is**
-A complete Next.js 14.2.31 real estate lead capture website for CanadaCashHomes, designed to convert Ontario homeowners into qualified leads. Features dual theme system (orange/blue), comprehensive form UX, and automated deployment.
+A complete Next.js 14.2.31 real estate lead capture website for Clyvanta, designed to convert Ontario homeowners into qualified leads. Features dual theme system (orange/blue), comprehensive form UX, and automated deployment.
 
 ### **Current Production State (August 1, 2025)**
-- **Live & Stable**: http://140.238.151.38/ returning HTTP 200
+- **Live & Stable**: http://150.230.31.24/ returning HTTP 200
 - **Docker Containerized**: Automated GitHub Actions deployment
 - **Security Patched**: Latest Next.js with vulnerability fixes
 - **SEO Ready**: Can enable search engines by deleting robots.txt

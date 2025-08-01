@@ -3,15 +3,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    container_name: cch-prod
+    container_name: clyvanta-prod
     ports:
       - "80:3000"
     env_file:
       - .env.production                 # Load production environment
     restart: always
     networks:
-      - cch-prod-network
+      - clyvanta-prod-network
 
 networks:
-  cch-prod-network:
+  clyvanta-prod-network:
     driver: bridge
