@@ -1,8 +1,6 @@
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile.prod
+    image: clyvanta-2-web:latest
     container_name: clyvanta-prod
     ports:
       - "80:3000"

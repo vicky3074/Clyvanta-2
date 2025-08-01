@@ -1,67 +1,87 @@
-name: Deploy to Oracle Cloud
+name: Deploy to Production
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
+  workflow_dispatch: # Allow manual triggers
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    environment: production
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
+      - name: Checkout code
+        uses: actions/checkout@v4
         
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Build application
-      run: npm run build
-      
-    - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.7.0
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
         
-    - name: Add server to known hosts
-      run: |
-        ssh-keyscan -H 150.230.31.24 >> ~/.ssh/known_hosts
+      - name: Build Docker image
+        run: |
+          echo "🏗️ Building Docker image with GitHub's 7GB RAM..."
+          docker buildx build --platform linux/amd64 -f Dockerfile.prod -t clyvanta-web:latest . --load
+          
+      - name: Save Docker image
+        run: |
+          echo "💾 Saving Docker image to tar file..."
+          docker save clyvanta-web:latest | gzip > clyvanta-web.tar.gz
+          ls -lh clyvanta-web.tar.gz
         
-    - name: Deploy to Oracle Cloud
-      run: |
-        # Create deployment directory on server
-        ssh ubuntu@150.230.31.24 "mkdir -p /home/ubuntu/Clyvanta-2"
-        
-        # Sync code to server
-        ssh ubuntu@150.230.31.24 "cd /home/ubuntu/Clyvanta-2 && git pull origin main || git clone https://github.com/vicky3074/Clyvanta-2.git ."
-        
-        # Build and deploy with Docker
-        ssh ubuntu@150.230.31.24 "
-          cd /home/ubuntu/Clyvanta-2 && 
-          docker-compose -f docker-compose.prod.yml down --remove-orphans || true &&
-          docker-compose -f docker-compose.prod.yml build --no-cache &&
-          docker-compose -f docker-compose.prod.yml up -d
-        "
-        
-    - name: Verify deployment
-      run: |
-        echo "Waiting for application to start..."
-        sleep 30
-        
-        # Check if site is responding
-        if curl -f -s http://150.230.31.24/ > /dev/null; then
-          echo "✅ Deployment successful - site is responding"
-        else
-          echo "❌ Deployment failed - site not responding"
-          exit 1
-        fi
-        
-        # Check container status
-        ssh ubuntu@150.230.31.24 "docker ps | grep clyvanta-prod || echo 'Container not found'"
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+          
+      - name: Upload and deploy
+        run: |
+          echo "📤 Uploading Docker image to server..."
+          scp -o StrictHostKeyChecking=no clyvanta-web.tar.gz ubuntu@${{ secrets.SERVER_HOST }}:/tmp/
+          
+          echo "🚀 Deploying on server..."
+          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.SERVER_HOST }} "
+            echo '🚀 Starting deployment...'
+            cd /home/ubuntu/Clyvanta-2
+            
+            echo '📡 Pulling latest code for docker-compose files...'
+            git fetch origin main
+            git reset --hard origin/main
+            
+            echo '🐳 Stopping old containers...'
+            docker-compose -f docker-compose.prod.yml down || true
+            
+            echo '📦 Loading new Docker image...'
+            docker load < /tmp/clyvanta-web.tar.gz
+            docker tag clyvanta-web:latest clyvanta-2-web:latest
+            
+            echo '🚀 Starting new containers...'
+            docker-compose -f docker-compose.prod.yml up -d
+            
+            echo '🧹 Cleaning up...'
+            rm -f /tmp/clyvanta-web.tar.gz
+            docker system prune -f || true
+            
+            echo '✅ Deployment complete!'
+            docker ps | grep clyvanta-prod
+          "
+          
+      - name: Verify deployment
+        run: |
+          echo "⏳ Waiting for container to start..."
+          sleep 15
+          
+          echo "🔍 Testing production site..."
+          curl -f -s -o /dev/null http://${{ secrets.SERVER_HOST }}/ || exit 1
+          echo "✅ Production site is responding!"
+          
+          echo "📱 Checking site health..."
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.SERVER_HOST }}/)
+          echo "HTTP Response: $RESPONSE"
+          
+          if [[ "$RESPONSE" == "200" ]]; then
+            echo "✅ Site is healthy!"
+          else
+            echo "⚠️ Site may have issues: HTTP $RESPONSE"
+          fi
