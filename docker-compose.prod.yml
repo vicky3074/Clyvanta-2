@@ -1,0 +1,17 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: cch-prod
+    ports:
+      - "80:3000"
+    env_file:
+      - .env.production                 # Load production environment
+    restart: always
+    networks:
+      - cch-prod-network
+
+networks:
+  cch-prod-network:
+    driver: bridge

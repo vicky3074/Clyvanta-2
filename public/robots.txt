@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Block all search engines from crawling this site
+# Remove this file when ready to go live and allow indexing

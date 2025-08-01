@@ -1,0 +1,16 @@
+{
+  "name": "CanadaCashHomes",
+  "short_name": "CCH",
+  "description": "Sell Your House Fast for Cash",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#f97316",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

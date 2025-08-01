@@ -1,0 +1,139 @@
+/* 
+ * COMPLETE DUAL THEME SYSTEM - Orange & Blue Themes
+ * 
+ * HOMEPAGE ALTERNATING PATTERN:
+ * ===========================================
+ * Orange Theme:              Blue Theme:
+ * - Hero: Dark gradient      - Hero: Light gradient  
+ * - Features: White          - Features: White
+ * - WhyChooseUs: Light Gray  - WhyChooseUs: Light Blue  
+ * - HowItWorks: White        - HowItWorks: White
+ * - FAQ: Light Gray          - FAQ: Light Blue
+ * - CTA: Dark gradient       - CTA: Light gradient
+ * 
+ * CSS VARIABLE STRUCTURE:
+ * ===========================================
+ * --brand-primary-XXX: Theme color scales (orange/blue)
+ * --brand-slate-XXX: Neutral grays (consistent across themes)  
+ * --brand-section-bg: Primary section background (light gray/light blue)
+ * --brand-section-bg-alt: Alternate section background (white)
+ * --brand-hero-text: Text for hero/CTA sections
+ * --brand-hero-subtext: Subtext for hero/CTA sections  
+ * --brand-section-text: Text for regular sections
+ * --brand-section-subtext: Subtext for regular sections
+ * --brand-border-default: Default border color
+ * --brand-border-hover: Hover state border color
+ * --brand-white: Pure white (cards, alternating sections)
+ * 
+ * COMPONENT USAGE:
+ * ===========================================
+ * .theme-hero-bg: Special gradient backgrounds (Hero, CTA)
+ * .theme-section-bg-primary: Primary alternating background  
+ * .theme-section-bg-alternate: Alternate background (white)
+ * 
+ * All colors are theme-aware and work automatically for both themes!
+ */
+
+:root {
+  /* Default theme (orange) - matches current colors */
+  --brand-primary-50: #fff7ed;   /* orange-50 */
+  --brand-primary-100: #ffedd5;  /* orange-100 */
+  --brand-primary-200: #fed7aa;  /* orange-200 */
+  --brand-primary-300: #fdba74;  /* orange-300 */
+  --brand-primary-400: #fb923c;  /* orange-400 */
+  --brand-primary-500: #f97316;  /* orange-500 */
+  --brand-primary-600: #ea580c;  /* orange-600 */
+  --brand-primary-700: #c2410c;  /* orange-700 */
+  --brand-primary-800: #9a3412;  /* orange-800 */
+  --brand-primary-900: #7c2d12;  /* orange-900 */
+  
+  /* Background gradients - orange theme */
+  --brand-bg-from: #1e293b;      /* slate-800 */
+  --brand-bg-via: #ea580c;       /* orange-600 */
+  --brand-bg-to: #c2410c;        /* orange-700 */
+  
+  /* Slate colors - consistent across themes */
+  --brand-slate-50: #f8fafc;     /* slate-50 */
+  --brand-slate-200: #e2e8f0;    /* slate-200 */
+  --brand-slate-300: #cbd5e1;    /* slate-300 */
+  --brand-slate-400: #94a3b8;    /* slate-400 */
+  --brand-slate-500: #64748b;    /* slate-500 */
+  --brand-slate-600: #475569;    /* slate-600 */
+  --brand-slate-700: #334155;    /* slate-700 */
+  --brand-slate-800: #1e293b;    /* slate-800 */
+  
+  /* Accent colors for trust badges */
+  --brand-accent-yellow-200: #fef08a;  /* yellow-200 */
+  --brand-accent-yellow-300: #fde047;  /* yellow-300 */
+  --brand-accent-yellow-400: #facc15;  /* yellow-400 */
+  
+  /* Neutrals */
+  --brand-white: #ffffff;
+  --brand-gray-50: #f9fafb;
+  --brand-gray-100: #f3f4f6;
+  
+  /* Border colors - orange theme */
+  --brand-primary-200: #fed7aa;  /* orange-200 for borders and hover states */
+  --brand-border-default: #e2e8f0; /* slate-200 - default borders */
+  --brand-border-hover: #fed7aa;   /* orange-200 - hover state borders */
+  
+  /* Section backgrounds - orange theme */
+  --brand-section-bg: #f8fafc;     /* primary section background (slate-50 - light gray) */
+  --brand-section-bg-alt: #ffffff; /* alternate section background (white) */
+  
+  /* Text colors - orange theme */
+  --brand-hero-text: #ffffff;      /* white text for dark backgrounds */
+  --brand-hero-subtext: #e2e8f0;   /* light gray text for dark backgrounds */
+  --brand-section-text: #111827;   /* dark text for light section backgrounds */
+  --brand-section-subtext: #4b5563; /* gray text for light section backgrounds */
+}
+
+/* Blue Theme Override - Light Blue Production Colors */
+[data-theme="blue"] {
+  --brand-primary-50: #eff6ff;   /* blue-50 - very light backgrounds */
+  --brand-primary-100: #dbeafe;  /* blue-100 - light backgrounds */
+  --brand-primary-200: #bfdbfe;  /* blue-200 - borders and subtle accents */
+  --brand-primary-300: #93c5fd;  /* blue-300 - lighter accents */
+  --brand-primary-400: #60a5fa;  /* blue-400 - medium accents */
+  --brand-primary-500: #3b82f6;  /* blue-500 - main blue color */
+  --brand-primary-600: #2563eb;  /* blue-600 - primary buttons and text */
+  --brand-primary-700: #1d4ed8;  /* blue-700 - hover states */
+  --brand-primary-800: #1e40af;  /* blue-800 - darker elements */
+  --brand-primary-900: #1e3a8a;  /* blue-900 - darkest blue */
+  
+  /* Border colors - blue theme */
+  --brand-border-default: #e2e8f0; /* slate-200 - default borders */
+  --brand-border-hover: #bfdbfe;   /* blue-200 - hover state borders */
+  
+  /* Section backgrounds - blue theme */
+  --brand-section-bg: #eff6ff;   /* primary section background (blue-50 - light blue) */
+  --brand-section-bg-alt: #ffffff; /* alternate section background (white) */
+  
+  /* Text colors - blue theme */
+  --brand-hero-text: #111827;      /* dark text for light backgrounds (gray-900) */
+  --brand-hero-subtext: #4b5563;   /* medium gray text for light backgrounds (gray-600) */
+  --brand-section-text: #111827;   /* dark text for light section backgrounds */
+  --brand-section-subtext: #4b5563; /* gray text for light section backgrounds */
+}
+
+/* Orange Theme (uses default :root values) */
+[data-theme="orange"] {
+  /* Uses default :root values - no overrides needed */
+}
+
+/* Utility classes for theme-aware backgrounds */
+.theme-section-bg-primary {
+  background-color: var(--brand-section-bg); /* primary section background */
+}
+
+.theme-section-bg-alternate {
+  background-color: var(--brand-section-bg-alt); /* alternate section background */
+}
+
+.theme-hero-bg {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%); /* orange theme: dark blue gradient */
+}
+
+[data-theme="blue"] .theme-hero-bg {
+  background: linear-gradient(to bottom right, #eff6ff, #ffffff, #e0e7ff); /* blue theme: light blue to white (PRODUCTION) */
+}

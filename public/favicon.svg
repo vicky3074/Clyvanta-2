@@ -1,0 +1,30 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="barGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6b7280;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4b5563;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Building Bars Icon - Optimized for small sizes -->
+  <!-- Bar 1 -->
+  <rect x="3" y="18" width="3" height="11" rx="1.5" fill="url(#barGradient)" />
+  
+  <!-- Bar 2 -->
+  <rect x="7" y="12" width="3" height="17" rx="1.5" fill="url(#barGradient)" />
+  
+  <!-- Bar 3 (tallest - center) -->
+  <rect x="11" y="6" width="3" height="23" rx="1.5" fill="url(#barGradient)" />
+  
+  <!-- Bar 4 -->
+  <rect x="15" y="8" width="3" height="21" rx="1.5" fill="url(#barGradient)" />
+  
+  <!-- Bar 5 -->
+  <rect x="19" y="14" width="3" height="15" rx="1.5" fill="url(#barGradient)" />
+  
+  <!-- Bar 6 -->
+  <rect x="23" y="10" width="3" height="19" rx="1.5" fill="url(#barGradient)" />
+  
+  <!-- Bar 7 -->
+  <rect x="27" y="20" width="3" height="9" rx="1.5" fill="url(#barGradient)" />
+</svg>
