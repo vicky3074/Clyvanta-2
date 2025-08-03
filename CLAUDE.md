@@ -7,7 +7,7 @@
 ### 📊 Project Status: **DEVELOPMENT READY** ✅
 
 - **Live URL**: http://150.230.31.24/ (Oracle Cloud deployment target)
-- **Local Development**: http://localhost:3000 or http://10.46.198.82:3000
+- **Local Development**: http://localhost:80 or http://10.46.198.82:80 (Docker required)
 - **Repository**: https://github.com/vicky3074/Clyvanta-2
 - **Server**: Oracle Cloud (150.230.31.24)
 - **Deployment**: **FULLY AUTOMATED** via GitHub Actions ✅
@@ -208,13 +208,30 @@ git push origin main
 
 ## 🛠️ Development Workflow
 
-### **Local Development**
+### **Local Development** (ALWAYS USE DOCKER)
 ```bash
 cd "/Users/vicky/Desktop/Vicky/Ventures/Clyvanta-2/Clyvanta-2"
-npm install
-npm run dev
-# Access: http://localhost:3000
+
+# REQUIRED: Always use Docker for local development
+docker-compose -f docker-compose.prod.yml up -d
+
+# Access: http://localhost:80 or http://10.46.198.82:80
+# Docker automatically handles npm install and dev server
+
+# Check status
+docker ps
+docker logs clyvanta-prod
+
+# Stop when done
+docker-compose -f docker-compose.prod.yml down
 ```
+
+### **⚠️ CRITICAL: Docker-Only Development Policy**
+- **NEVER use `npm run dev` directly** - always use Docker containers
+- **Local Development**: `docker-compose -f docker-compose.prod.yml up -d`
+- **Production Deployment**: Same Docker configuration ensures consistency
+- **Port**: Always use port 80 (not 3000) for local development
+- **Benefits**: Identical local/production environment, no dependency conflicts
 
 ### **Production Deployment** (AUTOMATED)
 ```bash
@@ -435,9 +452,10 @@ docker-compose -f docker-compose.prod.yml up -d
 ## 📚 Quick Commands Reference
 
 ```bash
-# Local Development
+# Local Development (DOCKER ONLY)
 cd "/Users/vicky/Desktop/Vicky/Ventures/Clyvanta-2/Clyvanta-2"
-npm run dev
+docker-compose -f docker-compose.prod.yml up -d
+# Access: http://localhost:80 or http://10.46.198.82:80
 
 # Deploy to Production (AUTOMATED)
 git add . && git commit -m "feat: changes" && git push origin main

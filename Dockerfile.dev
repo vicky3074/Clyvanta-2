@@ -1,21 +1,18 @@
-# Development Dockerfile - Optimized for local development with hot reloading
 FROM node:18-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Copy package files
 COPY package*.json ./
-RUN npm install
 
-# Copy source code (volumes will override this for live reloading)
+# Install dependencies
+RUN npm ci
+
+# Copy source code
 COPY . .
-
-# Development environment
-ENV NODE_ENV=development
 
 # Expose port
 EXPOSE 3000
 
-# Start development server (binds to 0.0.0.0 for Docker)
-CMD ["npm", "run", "dev"]
+# Start development server with hot reloading
+CMD ["npm", "run", "dev", "--", "-H", "0.0.0.0"]

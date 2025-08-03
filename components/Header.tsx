@@ -21,12 +21,19 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
       {/* Skip Navigation Link for Accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 focus:z-[60]"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 px-4 py-2 rounded-md z-50 focus:z-[60]"
+        style={{
+          backgroundColor: 'var(--brand-primary-600)',
+          color: 'white'
+        }}
       >
         Skip to main content
       </a>
       
-      <header className={`bg-white shadow-sm sticky top-0 z-50 ${className}`}>
+      <header 
+        className={`shadow-sm sticky top-0 z-50 ${className}`}
+        style={{ backgroundColor: 'var(--brand-section-bg-alt)' }}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center">
@@ -43,51 +50,55 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
           <nav className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
-              className="text-gray-900 font-medium text-base transition-colors"
+              className="font-medium text-base transition-colors"
               style={{
+                color: 'var(--brand-section-text)',
                 '--hover-color': 'var(--brand-primary-600)'
               } as React.CSSProperties}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = 'var(--brand-primary-600)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#111827';
+                e.currentTarget.style.color = 'var(--brand-section-text)';
               }}
             >
               Home
             </Link>
             <Link
               href="/how-it-works"
-              className="text-gray-900 font-medium text-base transition-colors"
+              className="font-medium text-base transition-colors"
+              style={{ color: 'var(--brand-section-text)' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = 'var(--brand-primary-600)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#111827';
+                e.currentTarget.style.color = 'var(--brand-section-text)';
               }}
             >
               How It Works
             </Link>
             <Link
               href="/about"
-              className="text-gray-900 font-medium text-base transition-colors"
+              className="font-medium text-base transition-colors"
+              style={{ color: 'var(--brand-section-text)' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = 'var(--brand-primary-600)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#111827';
+                e.currentTarget.style.color = 'var(--brand-section-text)';
               }}
             >
               About Us
             </Link>
             <Link
               href="/blog"
-              className="text-gray-900 font-medium text-base transition-colors"
+              className="font-medium text-base transition-colors"
+              style={{ color: 'var(--brand-section-text)' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = 'var(--brand-primary-600)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#111827';
+                e.currentTarget.style.color = 'var(--brand-section-text)';
               }}
             >
               Blog Articles
@@ -112,7 +123,17 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
             </Link>
             <Link
               href={SITE_CONFIG.contact.phone.href}
-              className="border-2 border-slate-600 text-slate-700 px-6 py-2.5 rounded-lg font-semibold hover:bg-slate-50 transition-colors text-base"
+              className="border-2 px-6 py-2.5 rounded-lg font-semibold transition-colors text-base"
+              style={{
+                borderColor: 'var(--brand-section-text)',
+                color: 'var(--brand-section-text)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--brand-section-bg)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+              }}
             >
               {SITE_CONFIG.contact.phone.display}
             </Link>
@@ -143,48 +164,52 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
             <div className="flex flex-col space-y-4">
               <Link
                 href="/"
-                className="text-gray-900 font-medium transition-colors"
+                className="font-medium transition-colors"
+                style={{ color: 'var(--brand-section-text)' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = 'var(--brand-primary-600)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#111827';
+                  e.currentTarget.style.color = 'var(--brand-section-text)';
                 }}
               >
                 Home
               </Link>
               <Link
                 href="/how-it-works"
-                className="text-gray-900 font-medium transition-colors"
+                className="font-medium transition-colors"
+                style={{ color: 'var(--brand-section-text)' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = 'var(--brand-primary-600)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#111827';
+                  e.currentTarget.style.color = 'var(--brand-section-text)';
                 }}
               >
                 How It Works
               </Link>
               <Link
                 href="/about"
-                className="text-gray-900 font-medium transition-colors"
+                className="font-medium transition-colors"
+                style={{ color: 'var(--brand-section-text)' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = 'var(--brand-primary-600)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#111827';
+                  e.currentTarget.style.color = 'var(--brand-section-text)';
                 }}
               >
                 About Us
               </Link>
               <Link
                 href="/blog"
-                className="text-gray-900 font-medium transition-colors"
+                className="font-medium transition-colors"
+                style={{ color: 'var(--brand-section-text)' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = 'var(--brand-primary-600)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#111827';
+                  e.currentTarget.style.color = 'var(--brand-section-text)';
                 }}
               >
                 Blog Articles
@@ -207,7 +232,17 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
                 </Link>
                 <Link
                   href={SITE_CONFIG.contact.phone.href}
-                  className="border-2 border-slate-600 text-slate-700 px-6 py-3 rounded-lg font-semibold hover:bg-slate-50 transition-colors text-center"
+                  className="border-2 px-6 py-3 rounded-lg font-semibold transition-colors text-center"
+                  style={{
+                    borderColor: 'var(--brand-section-text)',
+                    color: 'var(--brand-section-text)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'var(--brand-section-bg)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }}
                 >
                   {SITE_CONFIG.contact.phone.display}
                 </Link>
