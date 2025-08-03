@@ -505,7 +505,8 @@ export default function Home() {
                 🎨 Design Option 3: Minimalist
               </div>
               <h2 className="text-5xl sm:text-6xl font-light mb-6" style={{color: 'var(--brand-section-text)'}}>
-                <span className="font-thin">Simple.</span> <span className="font-bold">Powerful.</span>
+                <span className="font-thin">Simple.</span> <span className="font-bold">Everything You Need to Compete in a Digital World
+.</span>
               </h2>
               <p className="text-xl max-w-2xl mx-auto font-light" style={{color: 'var(--brand-section-subtext)'}}>
                 Clean solutions that focus on what matters most

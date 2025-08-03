@@ -19,9 +19,14 @@ export function ThemeToggle() {
   ];
 
   const currentIndex = themes.findIndex(t => t.id === theme);
-  const nextIndex = (currentIndex + 1) % themes.length;
-  const currentTheme = themes[currentIndex] || themes[0];
+  const validIndex = currentIndex === -1 ? 0 : currentIndex;
+  const nextIndex = (validIndex + 1) % themes.length;
+  const currentTheme = themes[validIndex];
   const nextTheme = themes[nextIndex];
+
+  if (!currentTheme || !nextTheme) {
+    return null;
+  }
 
   const cycleTheme = () => {
     setTheme(nextTheme.id);
