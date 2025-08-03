@@ -57,7 +57,13 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
   };
 
   return (
-    <footer className={`bg-gray-900 text-white ${className}`}>
+    <footer 
+      className={className}
+      style={{ 
+        backgroundColor: 'var(--brand-primary-800)', 
+        color: 'var(--brand-hero-text)' 
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         {/* Top Section: Logo + Description on Left, Contact Info on Right */}
@@ -70,28 +76,56 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
               height={40}
               className="invert mb-4"
             />
-            <p className="text-gray-400 text-lg leading-relaxed">
+            <p 
+              className="text-lg leading-relaxed"
+              style={{ color: 'var(--brand-hero-subtext)' }}
+            >
               Ontario's trusted cash home buyers. Fast, fair, and reliable property purchases across the province - any condition, any situation.
             </p>
           </div>
 
           <div className="md:text-right">
-            <h3 className="font-semibold text-xl mb-4">Contact Us</h3>
+            <h3 
+              className="font-semibold text-xl mb-4"
+              style={{ color: 'var(--brand-hero-text)' }}
+            >
+              Contact Us
+            </h3>
             <div className="space-y-3">
-              <div className="flex md:justify-end items-center text-gray-400">
+              <div 
+                className="flex md:justify-end items-center"
+                style={{ color: 'var(--brand-hero-subtext)' }}
+              >
                 <span className="mr-2">📞</span>
                 <a 
                   href={SITE_CONFIG.contact.phone.href}
-                  className="hover:text-white transition-colors font-semibold text-lg"
+                  className="transition-colors font-semibold text-lg"
+                  style={{ color: 'var(--brand-hero-subtext)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = 'var(--brand-hero-text)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+                  }}
                 >
                   {SITE_CONFIG.contact.phone.display}
                 </a>
               </div>
-              <div className="flex md:justify-end items-center text-gray-400">
+              <div 
+                className="flex md:justify-end items-center"
+                style={{ color: 'var(--brand-hero-subtext)' }}
+              >
                 <span className="mr-2">📧</span>
                 <a 
                   href={SITE_CONFIG.contact.email.href}
-                  className="hover:text-white transition-colors"
+                  className="transition-colors"
+                  style={{ color: 'var(--brand-hero-subtext)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = 'var(--brand-hero-text)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+                  }}
                 >
                   {SITE_CONFIG.contact.email.primary}
                 </a>
@@ -101,19 +135,42 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
         </div>
 
         {/* City Grid: Comprehensive Ontario Coverage */}
-        <div className="border-t border-gray-800 pt-8 mb-8">
-          <h4 className="text-2xl font-semibold mb-8 text-center">We Buy Houses Throughout Ontario</h4>
+        <div 
+          className="pt-8 mb-8"
+          style={{ borderTop: `1px solid var(--brand-primary-600)` }}
+        >
+          <h4 
+            className="text-2xl font-semibold mb-8 text-center"
+            style={{ color: 'var(--brand-hero-text)' }}
+          >
+            We Buy Houses Throughout Ontario
+          </h4>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             
             {/* Greater Toronto Area */}
             <div>
-              <h5 className="text-white font-semibold mb-3 text-sm uppercase tracking-wide border-b border-primary-500 pb-1">GTA</h5>
+              <h5 
+                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
+                style={{ 
+                  color: 'var(--brand-hero-text)',
+                  borderBottom: `2px solid var(--brand-primary-500)`
+                }}
+              >
+                GTA
+              </h5>
               <ul className="space-y-1">
                 {cityData.gta.map((city) => (
                   <li key={city.slug}>
                     <Link
                       href={`/${city.slug}`}
-                      className="text-gray-400 hover:text-orange-400 transition-colors text-sm"
+                      className="transition-colors text-sm"
+                      style={{ color: 'var(--brand-hero-subtext)' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-primary-400)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+                      }}
                     >
                       {city.name}
                     </Link>
@@ -124,13 +181,26 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
 
             {/* Major Cities */}
             <div>
-              <h5 className="text-white font-semibold mb-3 text-sm uppercase tracking-wide border-b border-primary-500 pb-1">Major Cities</h5>
+              <h5 
+                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
+                style={{ 
+                  color: 'var(--brand-hero-text)',
+                  borderBottom: `2px solid var(--brand-primary-500)`
+                }}
+              >Major Cities</h5>
               <ul className="space-y-1">
                 {cityData.major.map((city) => (
                   <li key={city.slug}>
                     <Link
                       href={`/${city.slug}`}
-                      className="text-gray-400 hover:text-orange-400 transition-colors text-sm"
+                      className="transition-colors text-sm"
+                      style={{ color: 'var(--brand-hero-subtext)' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-primary-400)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+                      }}
                     >
                       {city.name}
                     </Link>
@@ -141,13 +211,26 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
             
             {/* Golden Horseshoe */}
             <div>
-              <h5 className="text-white font-semibold mb-3 text-sm uppercase tracking-wide border-b border-primary-500 pb-1">Golden Horseshoe</h5>
+              <h5 
+                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
+                style={{ 
+                  color: 'var(--brand-hero-text)',
+                  borderBottom: `2px solid var(--brand-primary-500)`
+                }}
+              >Golden Horseshoe</h5>
               <ul className="space-y-1">
                 {cityData.horseshoe.map((city) => (
                   <li key={city.slug}>
                     <Link
                       href={`/${city.slug}`}
-                      className="text-gray-400 hover:text-orange-400 transition-colors text-sm"
+                      className="transition-colors text-sm"
+                      style={{ color: 'var(--brand-hero-subtext)' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-primary-400)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+                      }}
                     >
                       {city.name}
                     </Link>
@@ -158,13 +241,26 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
             
             {/* Niagara Region */}
             <div>
-              <h5 className="text-white font-semibold mb-3 text-sm uppercase tracking-wide border-b border-primary-500 pb-1">Niagara</h5>
+              <h5 
+                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
+                style={{ 
+                  color: 'var(--brand-hero-text)',
+                  borderBottom: `2px solid var(--brand-primary-500)`
+                }}
+              >Niagara</h5>
               <ul className="space-y-1">
                 {cityData.niagara.map((city) => (
                   <li key={city.slug}>
                     <Link
                       href={`/${city.slug}`}
-                      className="text-gray-400 hover:text-orange-400 transition-colors text-sm"
+                      className="transition-colors text-sm"
+                      style={{ color: 'var(--brand-hero-subtext)' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-primary-400)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+                      }}
                     >
                       {city.name}
                     </Link>
@@ -175,13 +271,26 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
             
             {/* Southwestern Ontario */}
             <div>
-              <h5 className="text-white font-semibold mb-3 text-sm uppercase tracking-wide border-b border-primary-500 pb-1">Southwest</h5>
+              <h5 
+                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
+                style={{ 
+                  color: 'var(--brand-hero-text)',
+                  borderBottom: `2px solid var(--brand-primary-500)`
+                }}
+              >Southwest</h5>
               <ul className="space-y-1">
                 {cityData.southwest.map((city) => (
                   <li key={city.slug}>
                     <Link
                       href={`/${city.slug}`}
-                      className="text-gray-400 hover:text-orange-400 transition-colors text-sm"
+                      className="transition-colors text-sm"
+                      style={{ color: 'var(--brand-hero-subtext)' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-primary-400)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+                      }}
                     >
                       {city.name}
                     </Link>
@@ -192,13 +301,26 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
             
             {/* Central & Eastern */}
             <div>
-              <h5 className="text-white font-semibold mb-3 text-sm uppercase tracking-wide border-b border-primary-500 pb-1">Central & East</h5>
+              <h5 
+                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
+                style={{ 
+                  color: 'var(--brand-hero-text)',
+                  borderBottom: `2px solid var(--brand-primary-500)`
+                }}
+              >Central & East</h5>
               <ul className="space-y-1">
                 {cityData.central.map((city) => (
                   <li key={city.slug}>
                     <Link
                       href={`/${city.slug}`}
-                      className="text-gray-400 hover:text-orange-400 transition-colors text-sm"
+                      className="transition-colors text-sm"
+                      style={{ color: 'var(--brand-hero-subtext)' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-primary-400)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+                      }}
                     >
                       {city.name}
                     </Link>
@@ -211,23 +333,131 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
 
 
         {/* Copyright and Legal */}
-        <div className="border-t border-gray-800 pt-6 text-center">
-          <div className="flex flex-wrap justify-center space-x-4 text-sm text-gray-400 mb-4">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-            <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
-            <Link href="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
-            <Link href="/ai-info" className="hover:text-white transition-colors">AI Info Page</Link>
-            <Link href="/golden-horseshoe" className="hover:text-white transition-colors">Golden Horseshoe</Link>
-            <Link href="/niagara-region" className="hover:text-white transition-colors">Niagara Region</Link>
-            <Link href="/southwestern-ontario" className="hover:text-white transition-colors">SW Ontario</Link>
+        <div 
+          className="pt-6 text-center"
+          style={{ borderTop: `1px solid var(--brand-primary-600)` }}
+        >
+          <div 
+            className="flex flex-wrap justify-center space-x-4 text-sm mb-4"
+            style={{ color: 'var(--brand-hero-subtext)' }}
+          >
+            <Link 
+              href="/privacy" 
+              className="transition-colors"
+              style={{ color: 'var(--brand-hero-subtext)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-text)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+              }}
+            >
+              Privacy Policy
+            </Link>
+            <Link 
+              href="/terms" 
+              className="transition-colors"
+              style={{ color: 'var(--brand-hero-subtext)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-text)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+              }}
+            >
+              Terms of Service
+            </Link>
+            <Link 
+              href="/contact" 
+              className="transition-colors"
+              style={{ color: 'var(--brand-hero-subtext)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-text)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+              }}
+            >
+              Contact
+            </Link>
+            <Link 
+              href="/sitemap" 
+              className="transition-colors"
+              style={{ color: 'var(--brand-hero-subtext)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-text)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+              }}
+            >
+              Sitemap
+            </Link>
+            <Link 
+              href="/ai-info" 
+              className="transition-colors"
+              style={{ color: 'var(--brand-hero-subtext)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-text)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+              }}
+            >
+              AI Info Page
+            </Link>
+            <Link 
+              href="/golden-horseshoe" 
+              className="transition-colors"
+              style={{ color: 'var(--brand-hero-subtext)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-text)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+              }}
+            >
+              Golden Horseshoe
+            </Link>
+            <Link 
+              href="/niagara-region" 
+              className="transition-colors"
+              style={{ color: 'var(--brand-hero-subtext)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-text)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+              }}
+            >
+              Niagara Region
+            </Link>
+            <Link 
+              href="/southwestern-ontario" 
+              className="transition-colors"
+              style={{ color: 'var(--brand-hero-subtext)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-text)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
+              }}
+            >
+              SW Ontario
+            </Link>
           </div>
           
-          <p className="text-gray-400 mb-4">
+          <p 
+            className="mb-4"
+            style={{ color: 'var(--brand-hero-subtext)' }}
+          >
             © 2024 CanadaCashHomes. We buy houses throughout Ontario.
           </p>
           
-          <p className="text-xs text-gray-500">
+          <p 
+            className="text-xs"
+            style={{ color: 'var(--brand-primary-400)' }}
+          >
             We are not real estate agents or brokers. We are real estate investors who purchase properties for investment purposes. 
             All offers are subject to property inspection and due diligence. Some restrictions may apply.
           </p>

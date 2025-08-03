@@ -10,10 +10,10 @@ export function ThemeProviders({ children }: ThemeProvidersProps) {
   return (
     <ThemeProvider
       attribute="data-theme"
-      defaultTheme="orange"
-      themes={['blue', 'orange']}
+      defaultTheme="white-blue"
+      themes={['white-blue', 'dark-gray', 'deep-black', 'white-gray']}
       enableSystem={false}
-      storageKey="canadacashhomes-theme"
+      storageKey="clyvanta-theme"
     >
       {children}
     </ThemeProvider>

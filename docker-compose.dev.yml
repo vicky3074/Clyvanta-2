@@ -1,0 +1,21 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: clyvanta-2-dev:latest
+    container_name: clyvanta-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+    networks:
+      - clyvanta-dev-network
+
+networks:
+  clyvanta-dev-network:
+    driver: bridge
