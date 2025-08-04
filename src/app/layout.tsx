@@ -12,22 +12,24 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "CanadaCashHomes - Sell Your House Fast for Cash",
-    template: "%s | CanadaCashHomes",
+    default: "Clyvanta - Enterprise IT Solutions & Digital Transformation",
+    template: "%s | Clyvanta",
   },
   description:
-    "Get a fair cash offer for your Canadian home in 24 hours. No repairs, no showings, no commissions. We buy houses as-is across Canada.",
+    "Enterprise-grade IT solutions that automate, optimize, and scale your business. Custom development, AI integration, digital marketing, and business automation services.",
   keywords: [
-    "sell house fast",
-    "cash for homes",
-    "we buy houses",
-    "Canada real estate",
-    "cash home buyers",
+    "IT consulting",
+    "enterprise software",
+    "digital transformation",
+    "business automation",
+    "AI integration",
+    "custom software development",
+    "business process automation",
   ],
-  authors: [{ name: "CanadaCashHomes" }],
-  creator: "CanadaCashHomes",
-  publisher: "CanadaCashHomes",
-  metadataBase: new URL("https://canadacashhomes.com"),
+  authors: [{ name: "Clyvanta" }],
+  creator: "Clyvanta",
+  publisher: "Clyvanta",
+  metadataBase: new URL("https://clyvanta.com"),
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -35,26 +37,26 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
-    locale: "en_CA",
-    url: "https://canadacashhomes.com",
-    title: "CanadaCashHomes - Sell Your House Fast for Cash",
+    locale: "en_US",
+    url: "https://clyvanta.com",
+    title: "Clyvanta - Enterprise IT Solutions & Digital Transformation",
     description:
-      "Get a fair cash offer for your Canadian home in 24 hours. No repairs, no showings, no commissions.",
-    siteName: "CanadaCashHomes",
+      "Enterprise-grade IT solutions that automate, optimize, and scale your business. Custom development, AI integration, and business automation services.",
+    siteName: "Clyvanta",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "CanadaCashHomes - We Buy Houses Fast",
+        alt: "Clyvanta - Enterprise IT Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CanadaCashHomes - Sell Your House Fast for Cash",
+    title: "Clyvanta - Enterprise IT Solutions & Digital Transformation",
     description:
-      "Get a fair cash offer for your Canadian home in 24 hours. No repairs, no showings, no commissions.",
+      "Enterprise-grade IT solutions that automate, optimize, and scale your business. Custom development and AI integration.",
     images: ["/images/og-image.jpg"],
   },
   robots: {

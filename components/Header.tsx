@@ -65,7 +65,7 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
               Home
             </Link>
             <Link
-              href="/how-it-works"
+              href="/blog"
               className="font-medium text-base transition-colors"
               style={{ color: 'var(--brand-section-text)' }}
               onMouseEnter={(e) => {
@@ -75,7 +75,7 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
                 e.currentTarget.style.color = 'var(--brand-section-text)';
               }}
             >
-              How It Works
+              Blog
             </Link>
             <Link
               href="/about"
@@ -89,19 +89,6 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
               }}
             >
               About Us
-            </Link>
-            <Link
-              href="/blog"
-              className="font-medium text-base transition-colors"
-              style={{ color: 'var(--brand-section-text)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'var(--brand-primary-600)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'var(--brand-section-text)';
-              }}
-            >
-              Blog Articles
             </Link>
           </nav>
 
@@ -119,7 +106,7 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
                 e.currentTarget.style.background = `linear-gradient(to right, var(--brand-primary-500), var(--brand-primary-600))`;
               }}
             >
-              Get My Offer
+              Get Started
             </Link>
             <Link
               href={SITE_CONFIG.contact.phone.href}
@@ -176,7 +163,7 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
                 Home
               </Link>
               <Link
-                href="/how-it-works"
+                href="/blog"
                 className="font-medium transition-colors"
                 style={{ color: 'var(--brand-section-text)' }}
                 onMouseEnter={(e) => {
@@ -186,7 +173,7 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
                   e.currentTarget.style.color = 'var(--brand-section-text)';
                 }}
               >
-                How It Works
+                Blog
               </Link>
               <Link
                 href="/about"
@@ -200,19 +187,6 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
                 }}
               >
                 About Us
-              </Link>
-              <Link
-                href="/blog"
-                className="font-medium transition-colors"
-                style={{ color: 'var(--brand-section-text)' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = 'var(--brand-primary-600)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'var(--brand-section-text)';
-                }}
-              >
-                Blog Articles
               </Link>
               <div className="flex flex-col space-y-2 pt-2">
                 <Link
@@ -228,7 +202,7 @@ const Header = React.memo(function Header({ className = "" }: HeaderProps) {
                     e.currentTarget.style.background = `linear-gradient(to right, var(--brand-primary-500), var(--brand-primary-600))`;
                   }}
                 >
-                  Get My Offer
+                  Get Started
                 </Link>
                 <Link
                   href={SITE_CONFIG.contact.phone.href}

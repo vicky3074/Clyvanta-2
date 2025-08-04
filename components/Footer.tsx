@@ -16,47 +16,6 @@ import { SITE_CONFIG } from "@/lib/config";
  * @returns JSX element for the site footer with city navigation
  */
 const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
-  // City data organized by regions (matching our cities implementation)
-  const cityData = {
-    gta: [
-      { slug: 'toronto', name: 'Toronto' },
-      { slug: 'mississauga', name: 'Mississauga' },
-      { slug: 'brampton', name: 'Brampton' },
-      { slug: 'vaughan', name: 'Vaughan' },
-      { slug: 'markham', name: 'Markham' }
-    ],
-    major: [
-      { slug: 'hamilton', name: 'Hamilton' },
-      { slug: 'london', name: 'London' },
-      { slug: 'windsor', name: 'Windsor' },
-      { slug: 'kingston', name: 'Kingston' },
-      { slug: 'st-catharines', name: 'St. Catharines' }
-    ],
-    horseshoe: [
-      { slug: 'burlington', name: 'Burlington' },
-      { slug: 'oakville', name: 'Oakville' },
-      { slug: 'milton', name: 'Milton' },
-      { slug: 'barrie', name: 'Barrie' }
-    ],
-    niagara: [
-      { slug: 'niagara-falls', name: 'Niagara Falls' },
-      { slug: 'welland', name: 'Welland' },
-      { slug: 'thorold', name: 'Thorold' },
-      { slug: 'fort-erie', name: 'Fort Erie' }
-    ],
-    southwest: [
-      { slug: 'kitchener', name: 'Kitchener' },
-      { slug: 'waterloo', name: 'Waterloo' },
-      { slug: 'chatham', name: 'Chatham' },
-      { slug: 'sarnia', name: 'Sarnia' }
-    ],
-    central: [
-      { slug: 'peterborough', name: 'Peterborough' },
-      { slug: 'belleville', name: 'Belleville' },
-      { slug: 'oshawa', name: 'Oshawa' },
-      { slug: 'cobourg', name: 'Cobourg' }
-    ]
-  };
 
   return (
     <footer 
@@ -73,7 +32,7 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
           <div>
             <Image
               src="/images/logo.svg"
-              alt="CanadaCashHomes Logo"
+              alt="Clyvanta Logo"
               width={160}
               height={40}
               className="invert mb-4"
@@ -82,7 +41,7 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
               className="text-lg leading-relaxed"
               style={{ color: 'var(--brand-hero-subtext)' }}
             >
-              Ontario's trusted cash home buyers. Fast, fair, and reliable property purchases across the province - any condition, any situation.
+              Enterprise-grade IT solutions that automate, optimize, and scale your business operations. Custom development, AI integration, and digital transformation services.
             </p>
           </div>
 
@@ -136,202 +95,6 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
           </div>
         </div>
 
-        {/* City Grid: Comprehensive Ontario Coverage */}
-        <div 
-          className="pt-8 mb-8"
-          style={{ borderTop: `1px solid var(--brand-primary-600)` }}
-        >
-          <h4 
-            className="text-2xl font-semibold mb-8 text-center"
-            style={{ color: 'var(--brand-hero-text)' }}
-          >
-            We Buy Houses Throughout Ontario
-          </h4>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            
-            {/* Greater Toronto Area */}
-            <div>
-              <h5 
-                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
-                style={{ 
-                  color: 'var(--brand-hero-text)',
-                  borderBottom: `2px solid var(--brand-primary-500)`
-                }}
-              >
-                GTA
-              </h5>
-              <ul className="space-y-1">
-                {cityData.gta.map((city) => (
-                  <li key={city.slug}>
-                    <Link
-                      href={`/${city.slug}`}
-                      className="transition-colors text-sm"
-                      style={{ color: 'var(--brand-hero-subtext)' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-primary-400)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
-                      }}
-                    >
-                      {city.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Major Cities */}
-            <div>
-              <h5 
-                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
-                style={{ 
-                  color: 'var(--brand-hero-text)',
-                  borderBottom: `2px solid var(--brand-primary-500)`
-                }}
-              >Major Cities</h5>
-              <ul className="space-y-1">
-                {cityData.major.map((city) => (
-                  <li key={city.slug}>
-                    <Link
-                      href={`/${city.slug}`}
-                      className="transition-colors text-sm"
-                      style={{ color: 'var(--brand-hero-subtext)' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-primary-400)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
-                      }}
-                    >
-                      {city.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Golden Horseshoe */}
-            <div>
-              <h5 
-                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
-                style={{ 
-                  color: 'var(--brand-hero-text)',
-                  borderBottom: `2px solid var(--brand-primary-500)`
-                }}
-              >Golden Horseshoe</h5>
-              <ul className="space-y-1">
-                {cityData.horseshoe.map((city) => (
-                  <li key={city.slug}>
-                    <Link
-                      href={`/${city.slug}`}
-                      className="transition-colors text-sm"
-                      style={{ color: 'var(--brand-hero-subtext)' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-primary-400)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
-                      }}
-                    >
-                      {city.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Niagara Region */}
-            <div>
-              <h5 
-                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
-                style={{ 
-                  color: 'var(--brand-hero-text)',
-                  borderBottom: `2px solid var(--brand-primary-500)`
-                }}
-              >Niagara</h5>
-              <ul className="space-y-1">
-                {cityData.niagara.map((city) => (
-                  <li key={city.slug}>
-                    <Link
-                      href={`/${city.slug}`}
-                      className="transition-colors text-sm"
-                      style={{ color: 'var(--brand-hero-subtext)' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-primary-400)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
-                      }}
-                    >
-                      {city.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Southwestern Ontario */}
-            <div>
-              <h5 
-                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
-                style={{ 
-                  color: 'var(--brand-hero-text)',
-                  borderBottom: `2px solid var(--brand-primary-500)`
-                }}
-              >Southwest</h5>
-              <ul className="space-y-1">
-                {cityData.southwest.map((city) => (
-                  <li key={city.slug}>
-                    <Link
-                      href={`/${city.slug}`}
-                      className="transition-colors text-sm"
-                      style={{ color: 'var(--brand-hero-subtext)' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-primary-400)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
-                      }}
-                    >
-                      {city.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Central & Eastern */}
-            <div>
-              <h5 
-                className="font-semibold mb-3 text-sm uppercase tracking-wide pb-1"
-                style={{ 
-                  color: 'var(--brand-hero-text)',
-                  borderBottom: `2px solid var(--brand-primary-500)`
-                }}
-              >Central & East</h5>
-              <ul className="space-y-1">
-                {cityData.central.map((city) => (
-                  <li key={city.slug}>
-                    <Link
-                      href={`/${city.slug}`}
-                      className="transition-colors text-sm"
-                      style={{ color: 'var(--brand-hero-subtext)' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-primary-400)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = 'var(--brand-hero-subtext)';
-                      }}
-                    >
-                      {city.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
 
 
         {/* Copyright and Legal */}
@@ -383,7 +146,7 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
               Contact
             </Link>
             <Link 
-              href="/sitemap" 
+              href="/blog" 
               className="transition-colors"
               style={{ color: 'var(--brand-hero-subtext)' }}
               onMouseEnter={(e) => {
@@ -393,59 +156,7 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
                 e.currentTarget.style.color = 'var(--brand-hero-subtext)';
               }}
             >
-              Sitemap
-            </Link>
-            <Link 
-              href="/ai-info" 
-              className="transition-colors"
-              style={{ color: 'var(--brand-hero-subtext)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'var(--brand-hero-text)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
-              }}
-            >
-              AI Info Page
-            </Link>
-            <Link 
-              href="/golden-horseshoe" 
-              className="transition-colors"
-              style={{ color: 'var(--brand-hero-subtext)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'var(--brand-hero-text)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
-              }}
-            >
-              Golden Horseshoe
-            </Link>
-            <Link 
-              href="/niagara-region" 
-              className="transition-colors"
-              style={{ color: 'var(--brand-hero-subtext)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'var(--brand-hero-text)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
-              }}
-            >
-              Niagara Region
-            </Link>
-            <Link 
-              href="/southwestern-ontario" 
-              className="transition-colors"
-              style={{ color: 'var(--brand-hero-subtext)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'var(--brand-hero-text)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'var(--brand-hero-subtext)';
-              }}
-            >
-              SW Ontario
+              Blog
             </Link>
           </div>
           
@@ -453,15 +164,15 @@ const Footer = React.memo(function Footer({ className = "" }: FooterProps) {
             className="mb-4"
             style={{ color: 'var(--brand-hero-subtext)' }}
           >
-            © 2024 CanadaCashHomes. We buy houses throughout Ontario.
+            © 2024 Clyvanta. Enterprise IT solutions and digital transformation services.
           </p>
           
           <p 
             className="text-xs"
             style={{ color: 'var(--brand-primary-400)' }}
           >
-            We are not real estate agents or brokers. We are real estate investors who purchase properties for investment purposes. 
-            All offers are subject to property inspection and due diligence. Some restrictions may apply.
+            Professional IT consulting services. Custom solutions tailored to your business needs. 
+            All projects subject to consultation and technical assessment.
           </p>
         </div>
       </div>
